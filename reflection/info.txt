@@ -1,0 +1,8 @@
+var calculadora = Assembly.Load("Calculadora, Version=1.0.0.0, Culture=neutral, PublicKeyToken=64d1da51fbed8dc3, processorArchitecture=MSIL");
+var calc = calculadora.GetType("Calculadora.Calc");
+var somar = calc.GetMethod("Somar");
+
+var instance = calculadora.CreateInstance("Calculadora.Calc");
+
+var x = somar.Invoke(instance, new object[] { 10, 4 });
+Console.WriteLine($"Soma é {x}");

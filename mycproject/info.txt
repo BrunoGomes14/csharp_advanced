@@ -1,0 +1,20 @@
+# https://sourceforge.net/projects/mingw/
+# selecionar packages: 
+    mingw32-gcc
+    mingw32-gcc-core-deps
+    mingw32-gcc-g++
+    mingw32-gdb
+# variáveis de ambiente: Path -> C:\MinGW\bin
+
+# projeto de C
+
+# Projeto C# no csproj -> <PlatformTarget>x86</PlatformTarget>
+
+
+# compilação
+gcc -c program.c
+gcc -shared -o program.dll program.o
+
+
+# colocar dll na pasta raiz do projeto
+

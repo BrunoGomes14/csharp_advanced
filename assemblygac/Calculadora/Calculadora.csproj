@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;net462</TargetFrameworks>
+  </PropertyGroup>
+
+<PropertyGroup>
+  <Company>DevMonk</Company>
+  <Authors>Bruno O.</Authors>
+  <PackageId>DevMonk.GAC</PackageId>
+  <Version>1.0.0</Version>
+  <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  <FileVersion>1.0.0.0</FileVersion>
+</PropertyGroup>
+
+<PropertyGroup>
+   <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+</PropertyGroup>
+
+  <ItemGroup>
+    <None Include="dummy.txt" CopyToOutputDirectory="Always" />
+    <None Include="AssemblyInfo.cs" CopyToOutputDirectory="Always" />
+    <None Include="Calculadora.snk" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+
+</Project>

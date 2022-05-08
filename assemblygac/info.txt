@@ -1,0 +1,68 @@
+
+--- GAC ---------------------------------------
+:: Global Assembly Cache
+
+Listar Assemblies
+> gacutil -l
+
+Criar strong name
+> sn -k [path/para/chave.snk]
+
+Adicionar no GAC
+> gacutil -I Calculadora.dll
+
+Remover do GAC
+> gacutil -u Calculadora
+
+
+
+--- Adicionar ao GAC pelo AL ------------------
+
+1. Compilar arquivo com module
+csc Calc1.cs /target:module
+
+2. Vincular module com strong name gerando DLL
+al /out:Calculadora.dll Calc1.netmodule /keyfile:Calculadora.snk
+
+
+
+
+--- Adicionar ao GAC pelo AssemblyInfo --------
+
+1. Criar arquivo AssemblyInfo.cs 
+
+2. Atribuir atributo que vincula com strong name
+[assembly: System.Reflection.AssemblyKeyFileAttribute("Calculadora.snk")]
+
+3. Remover opção de geração de AssemblyInfo automática
+<PropertyGroup>
+   <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+</PropertyGroup>
+
+4. Incluir net462 framework 
+<PropertyGroup>
+  <TargetFrameworks>net5.0;net462</TargetFrameworks>
+</PropertyGroup>
+
+5. Opcional. Copiar Arquivos para pasta de compilação
+<ItemGroup>
+  <None Include="dummy.txt" CopyToOutputDirectory="Always" />
+  <None Include="AssemblyInfo.cs" CopyToOutputDirectory="Always" />
+  <None Include="Calculadora.snk" CopyToOutputDirectory="Always" />
+</ItemGroup>
+
+
+
+
+--- Create a Class Library ----------------------
+
+1. Create solution
+dotnet new sln
+
+2. Create project
+dotnet new classlib -o Calculadora
+
+3. Vincular projeto a solução
+dotnet sln add Calculadora/Calculadora.csproj
+
+--------------------------------------------
